@@ -3,3 +3,17 @@ name: CD
 on:
   release:
     types: [created]
+jobs:
+  validate-release-name:
+    name: Validate release name
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout working branch
+        uses: actions/checkout@v2
+
+      - name: Checkout private actions repo
+        uses: actions/checkout@v2
+        with:
+           repository: acme/private-actions
+           token: ${{ secrets.GitHub_PAT }} # `GitHub_PAT` is a secret that contains your PAT
+           path: private-actions

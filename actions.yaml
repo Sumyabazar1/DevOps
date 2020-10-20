@@ -1,0 +1,13 @@
+
+name: 'Validate tags'
+author: 'Sumiyabazar Tsogtsaikhan'
+description: 'Validate release/pre-release tags'
+inputs:
+  prerelease:
+    description: 'Tag is prerelease'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.prerelease }}
